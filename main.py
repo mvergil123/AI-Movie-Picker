@@ -21,41 +21,41 @@ model.evaluate(x_test, y_test) """
 
 
 genome_scores = pd.read_csv(
-    "ml-25m/genome-scores.csv",
+    "genome-scores.csv",
     names=["movieId", "tagId", "relevance"])
 
 genome_scores.head()
 
 
 genome_tags = pd.read_csv(
-    "ml-25m/genome-tags.csv",
+    "genome-tags.csv",
     names=["tagId", "tag"])
 
 genome_tags.head()
 
 
 links = pd.read_csv(
-    "ml-25m/links.csv",
+    "links.csv",
     names=["movieId", "imdbId", "tmdbId"])
 
 links.head()
 
 movies = pd.read_csv(
-    "ml-25m/movies.csv",
+    "movies.csv",
     names=["movieId", "title", "genres"])
 
 movies.head()
 
 
 ratings = pd.read_csv(
-    "ml-25m/ratings.csv",
+    "ratings.csv",
     names=["userId", "movieId", "rating", "timestamp"])
 
 ratings.head()
 
 
 tags = pd.read_csv(
-    "ml-25m/tags.csv",
+    "tags.csv",
     names=["userId", "movieId", "tag", "timestamp"])
 
 tags.head()

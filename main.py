@@ -1,5 +1,7 @@
 import tensorflow as tf
 import pandas as pd
+import numpy as np
+from tensorflow.keras import layers
 """ mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
@@ -29,10 +31,25 @@ genome_scores.head()
 
 genome_tags = pd.read_csv(
     "genome-tags.csv",
-    names=["tagId", "tag"])
+    names=["tagId", "tag"], skiprows=1)
 
 genome_tags.head()
 
+genome_tags_features = genome_tags.copy()
+genome_tags_labels = genome_tags_features.pop("tagId")
+print(genome_tags_labels)
+# input("Check this!!! ")
+genome_tags_features = np.array(genome_tags_features)
+
+genome_tags_model = tf.keras.Sequential([
+  layers.Dense(64),
+  layers.Dense(1)
+])
+
+genome_tags_model.compile(loss = tf.keras.losses.MeanSquaredError(),
+                      optimizer = tf.keras.optimizers.Adam())
+
+genome_tags_model.fit(genome_tags_features, genome_tags_labels, epochs=10)
 
 links = pd.read_csv(
     "links.csv",

@@ -1,4 +1,6 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.compat.v1.disable_eager_execution()
+
 
 # Define the input and output data
 x = tf.placeholder(tf.float32, shape=[None, 2])
@@ -25,4 +27,5 @@ with tf.Session() as sess:
     
   # Evaluate the model
   output = sess.run(output_layer, feed_dict={x: [[1, 2]]})
+  print("This is the output!!!")
   print(output)  # Output: [[0.05]]
